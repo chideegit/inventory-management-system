@@ -1,25 +1,9 @@
 {% extends 'store/base.html' %}
 
+{% block header %} <h1 class="h2">Dashboard</h1> {% endblock header %}
+
 {% block content %}
 <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
-        <div class="card tale-bg">
-            <div class="card-people mt-auto">
-                <img src="/static/images/dashboard/people.svg" alt="people">
-                <div class="weather-info">
-                    <div class="d-flex">
-                        <div>
-                            <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
-                        </div>
-                        <div class="ml-2">
-                            <h4 class="location font-weight-normal">Lagos</h4>
-                            <h6 class="font-weight-normal">Nigeria</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="col-lg-6 grid-margin stretch-card">
         <div class="card">
@@ -43,17 +27,32 @@
                             <tr>
                                 <td>{{o.name}}</td>
                                 <td>{{o.recent_quantity}}</td>
-                                <td><label class="badge badge-danger">Pending</label></td>
+                                <td><span class="text-danger">Finished</span></td>
                             </tr>
                             {% endfor %}
                             {% endif %}
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="ml-4 mb-4">
                 <a href="{% url 'finished-items' %}">View all finished items..</a>
             </div>
+        </div>
+    </div>
+
+    <div class="card" style="width: 15rem;">
+        <img src="https://drive.google.com/uc?export=download&id=1ulzF48zgGVHPRJobRuiLT7xy26Tnxl7S" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Add New Item</h5>
+            <p class="card-text">Add a new item to the store, to keep track of it.</p>
+            <a href="{% url 'add-item' %}" class="btn btn-outline-primary btn-sm">Get Started</a>
+        </div>
+    </div>
+    <div class="card ms-3" style="width: 15rem;">
+        <img src="https://drive.google.com/uc?export=download&id=16QG3UrVcIZFiIalTd_9M_s_FzButLoz_" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Issue An Item</h5>
+            <p class="card-text">Got an Item to issue out? Do it here.</p>
+            <a href="{% url 'issue-item' %}" class="btn btn-outline-primary btn-sm">Get Started</a>
         </div>
     </div>
 </div>
