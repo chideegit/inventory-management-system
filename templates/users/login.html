@@ -1,15 +1,17 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-10 col-md-8 col-lg-6">
-            <div class="card shadow" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+
+            <div class="card shadow" style="width: 25rem;">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
                     <h5 class="card-title">Welcome Back.</h5>
-                    <p class="card-text">Please login to continue.</p>
-                    <form>
+                    <p class="card-text">Please login to continue.</p> <hr>
+                    <form method="POST">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
                             <input type="input" name="username" class="form-control" id="exampleInputEmail1"
@@ -19,11 +21,8 @@
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        <small><p class="card-text">Don't have an account? <a href="{% url 'register' %}">Register</a></p></small>
                     </form>
 
                 </div>
