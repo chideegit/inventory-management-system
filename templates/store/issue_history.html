@@ -1,0 +1,44 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Received Items History</h4>
+            <p class="card-description">
+                View all the items that have been received over time.
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Issued By</th>
+                            <th>Issued To</th>
+                            <th>Quantity Issued</th>
+                            <th>Quantity Remaining</th>
+                            <th>Issued On</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if obj %}
+                        {% for o in obj %}
+                        <tr>
+                            <td>{{o.item}}</td>
+                            <td>{{o.issued_by}}</td>
+                            <td>{{o.issued_to}}</td>
+                            <td>{{o.quantity_issued}}</td>
+                            <td>{{o.quantity_remaining}}</td>
+                            <td>{{o.issued_on}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

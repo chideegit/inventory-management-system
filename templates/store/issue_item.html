@@ -1,0 +1,61 @@
+{% extends 'store/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Issue an item</h4>
+                <p class="card-description">
+                    Issue an item out to someone in your organization.
+                </p>
+                <form class="forms-sample" method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button class="btn btn-primary mr-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Recently Issued Items</h4>
+                <p class="card-description">
+                    View the recent items that have been issued out.
+                </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity Issued</th>
+                                <th>Issued To</th>
+                                <th>Date Issued</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if obj1 %}
+                            {% for o in obj1 %}
+                            <tr>
+                                <td>{{o.item}}</td>
+                                <td>{{o.quantity_issued}}</td>
+                                <td>{{o.issued_to}}</td>
+                                <td>{{o.issued_on}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ml-4 mb-4">
+                <a href="{% url 'issue-history' %}">View all issued items..</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

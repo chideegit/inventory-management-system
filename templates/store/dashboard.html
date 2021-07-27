@@ -1,0 +1,60 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+            <div class="card-people mt-auto">
+                <img src="/static/images/dashboard/people.svg" alt="people">
+                <div class="weather-info">
+                    <div class="d-flex">
+                        <div>
+                            <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                        </div>
+                        <div class="ml-2">
+                            <h4 class="location font-weight-normal">Lagos</h4>
+                            <h6 class="font-weight-normal">Nigeria</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Finished Items</h4>
+                <p class="card-description">
+                    View the items in the store that needs to be replenished.
+                </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity Remaining</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if obj %}
+                            {% for o in obj %}
+                            <tr>
+                                <td>{{o.name}}</td>
+                                <td>{{o.recent_quantity}}</td>
+                                <td><label class="badge badge-danger">Pending</label></td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ml-4 mb-4">
+                <a href="{% url 'finished-items' %}">View all finished items..</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
